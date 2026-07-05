@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="author" content="Hadil Amrane">
+      <meta name="description" content="personal portfolio site">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="spirit.css">
+      <link rel="shortcut icon" type="image/png" href="assets/wIcon.png">
+      <title>hadil - Home</title>
+  </head>
+  <body>
+    <!-- 1. Splash Screen -->
+    <div id="splash">
+      <img src="assets/wIcon.png" alt="logo">
+    </div>
+
+    <!-- 2. Main Simulation Header -->
+    <div class="stepbody">
+      <header class="header">
+        <a href="index.html"><img class="logo" src="assets/wIcon.png" alt="symbol logo"></a>
+        <div class="simulation-container">
+            <canvas id="canvas"></canvas>
+        </div>
+      </header>
+    </div>
+
+    <!-- 3. Verses / Quotes Branding Section -->
+    <section class="fBrand">
+      <div class="fLogo">
+          <img src="assets/bIcon.png" width="60" alt="Hadil Logo">
+      </div>
+      <div class="fVerse">
+          <img src="assets/bVerse.png" width="530" alt="Arabic Verse Outline" class="verse-img">
+          <p class="verse-translation">
+              'Indeed, in the creation of the heavens and the earth and the alternation of the day and night there are signs for people of reason'.
+          </p>
+      </div>
+    </section>
+
+    <!-- 4. Footer & Navigation Area -->
+    <footer class="site-footer">
+      <div class="info-row">
+        <span class="left-age">I am <span id="age-counter">18.00000000000000</span> years old.</span>
+        <div class="right-links">
+          <a href="https://www.instagram.com/haadilrr/" class="nav-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">Ig</a>
+          <a href="https://www.youtube.com/@haadil.i" class="nav-link" aria-label="YouTube" target="_blank" rel="noopener noreferrer">YT</a>
+          <a href="https://github.com/hadilam" class="nav-link" aria-label="Github" target="_blank" rel="noopener noreferrer">Github</a>
+        </div>
+      </div>
+      
+      <div class="taskbar">
+        <nav class="paths">
+          <a href="#" class="bar-link">HOME</a>
+          <a href="#" class="bar-link">PROJECTS</a>
+          <a href="#" class="bar-link">ABOUT ME</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- 5. Bottom Warm Greeting -->
+    <div class="greeting">
+      <p> طِـبتُ بوجودك</p>
+      <p>It's Always Nice To Have You !</p>
+    </div>
+
+    <!-- 6. WebAssembly/Emscripten Engine Context Initialization -->
+    <script type="text/javascript">
+      var Module = {
+        canvas: (function() {
+          var canvas = document.getElementById('canvas');
+      
+          var resize = function() {
+            canvas.width = canvas.clientWidth;
+            canvas.height = canvas.clientHeight;
+          };
+      
+          window.addEventListener('resize', resize);
+          setTimeout(resize, 0); 
+          return canvas;
+        })()
+      };
+    </script>
+    <script async src="primes_engine.js"></script>
+    <script type="text/javascript">
+    (function() {
+      // Exact birth timing: August 12, 2008 at 4:00 AM
+      const birthDate = new Date(2008, 7, 12, 4, 0); 
+      const ageElement = document.getElementById('age-counter');
+
+      function updateAgeCounter() {
+        const now = new Date();
+        const ageInMilliseconds = now - birthDate;
+        const ageInYears = ageInMilliseconds / 31557600000; // 365.25 days total ms
+      
+        ageElement.textContent = ageInYears.toFixed(14);
+      
+        requestAnimationFrame(updateAgeCounter);
+      }
+
+      updateAgeCounter();
+    })();
+  </script>
+
+
+  </body>
+</html>
